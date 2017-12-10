@@ -1,0 +1,14 @@
+{
+  "name": "meetup_serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raphael Araujo <xhamps@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless": "^1.24.1"
+  }
+}
