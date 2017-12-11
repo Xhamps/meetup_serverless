@@ -1,10 +1,45 @@
 service: meetup-serverless
 
+custom:
+  stage: ${env:SLS_STAGE, opt:stage, self:provider.stage}
+
 provider:
   name: aws
   runtime: nodejs6.10
+  memorySize: 256  
+  timeout: 10
+  environment:
+    STAGE: ${self:custom.stage}
+    SERVERLESS_SERVICE: ${self:service}
+    USER: 'xhamps'
+    GITHUB_TOKEN: ${env:GITHUB_TOKEN}
 
-  functions:
-  hello:
-    handler: handler.hello
+functions:
 
+  getRepos:
+    handler: github/repos/get.handler
+    events:
+      - http: 
+          path: /repos
+          method: get
+          cors: true
+
+  getIssues:
+    handler: github/issues/getAll.handler
+    events:
+      - http:
+          path: /repos/{fullName}/issues/
+          method: get
+          cors: true
+
+  closeIssues:
+    handler: github/issues/close.handler
+    events:
+      - http:
+          path: /repos/{fullName}/issues/{number}
+          method: put
+          cors: true
+
+
+plugins:
+  - serverless-offline

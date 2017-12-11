@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "offline": "sls offline start"
   },
   "author": "Raphael Araujo <xhamps@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "serverless": "^1.24.1"
+    "serverless": "^1.24.1",
+    "serverless-offline": "^3.16.0"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "lodash": "^4.17.4"
   }
 }
