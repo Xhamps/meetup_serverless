@@ -16,9 +16,7 @@ const handler = ( event, context, callback ) => {
   }
   
   axios.patch(`https://api.github.com/repos/${USER}/${fullName}/issues/${number}`,{
-    data: {
-      state
-    }
+    state
   })
     .then(({ data }) => {
       const result = _.pick(data, ['id', 'title', 'number', 'state']);
