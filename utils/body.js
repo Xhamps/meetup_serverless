@@ -1,7 +1,7 @@
 const build = (statusCode, body) =>{
   return {
     statusCode,
-    body
+    body: JSON.stringify(body)
   }
 };
 
